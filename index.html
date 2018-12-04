@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>openclass-1</title>
+    <link rel="stylesheet" href="style/zns_common.css" type="text/css">
+    <link rel="stylesheet" href="style/zns_headerbar.css" type="text/css">
+    <script src="js/move.js"></script>
+    <script>
+        window.onload = function(){
+            var oDiv = document.getElementById("div1");
+            var oNavBox = oDiv.children[0];
+            var oUl = oDiv.children[1];
+            var aLi = oUl.children;
+
+            for(var i=0; i<aLi.length; i++){
+                if(i%2 == 1){
+                    aLi[i].style.left = -aLi[i].offsetWidth + "px";
+                }
+                else{
+                    aLi[i].style.left = aLi[i].offsetWidth + "px";
+                }
+            }
+
+            oNavBox.onclick = function(){
+                var i = 0;
+                var timer = setInterval(function(){
+                  startMove(aLi[i], {left:0, opacity:100});
+                    i++;
+                    if(i==ali.length){
+                        clearInterval(timer);
+                    }
+              },77);
+            };
+
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].onclick = function(){
+                    var oSpan = oNavBox.children[0];
+                    oSpan.innerHTML = this.children[0].innerHTML;
+
+                    var j = aLi.length-1;
+                    var timer2 = setInterval(function(){
+                        startMove(aLi[j], {left: j%2 ? -aLi[j].offsetWidth : aLi[j].offsetWidth, opacity:0});
+                        j-- ;
+                        if(j==-1){
+                            clearInterval(timer2);
+                        }
+                    }, 77);
+                };
+            }
+
+        };
+
+
+    </script>
+</head>
+<body>
+    
+    <div class="warp" id="div1">
+        <div class="navBox">
+            <span><img src="images/ico_01.png" alt="" style="display:none">Please choose</span>
+            <em class="triangle"><i></i></em>
+        </div>
+        <ul class="navList">
+            <li><a href="javascript:;"><img src="images/ico_01.png" alt="http://tinasun.x10host.com/">About us</a></li>
+            <li><a href="javascript:;"><img src="images/ico_02.png" alt="http://tinasun.x10host.com/" />Contact us</a></li>
+            <li><a href="javascript:;"><img src="images/ico_03.png" alt="http://tinasun.x10host.com/" />Website</a></li>
+            <li><a href="javascript:;"><img src="images/ico_04.png" alt="http://tinasun.x10host.com/" />Practice</a></li>
+            <li><a href="javascript:;"><img src="images/ico_05.png" alt="http://tinasun.x10host.com/" />Donation</a></li>
+            <li><a href="javascript:;"><img src="images/ico_06.png" alt="http://tinasun.x10host.com/" />Forum</a></li>
+        </ul>
+    </div>
+    
+
+</body>
+</html>
